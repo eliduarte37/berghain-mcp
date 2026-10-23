@@ -29,8 +29,16 @@ from typing import Any
 # ─── CONFIG ──────────────────────────────────────────────────────────────────
 
 BASE_URL    = os.environ.get("BERGHAIN_MCP_BASE_URL", "https://agora-os.fly.dev")
-AGORA_KEY   = os.environ.get("AGORA_API_KEY", "")
+AGORA_KEY   = os.environ.get("BERGHAIN_API_KEY", "") or os.environ.get("AGORA_API_KEY", "")
 TIMEOUT     = int(os.environ.get("BERGHAIN_MCP_TIMEOUT", "60"))
+
+# Require API key — fail fast at startup if missing
+if not AGORA_KEY and not os.environ.get("BERGHAIN_MCP_ALLOW_OPEN", ""):
+    sys.stderr.write(
+        "[BERGHAIN·MCP] ERROR: BERGHAIN_API_KEY is required.\n"
+        "  Get your key at https://agora-os.fly.dev/berghain\n"
+    )
+    sys.exit(1)
 
 # ─── STATIC KNOWLEDGE (no network needed) ────────────────────────────────────
 
