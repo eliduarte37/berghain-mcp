@@ -1,0 +1,47 @@
+name: berghain
+displayName: BERGHAIN — Sovereign AI Playground
+description: >
+  BERGHAIN is a sovereign AI stress-testing environment. Five rooms. Thirteen stimuli.
+  Run any AI through CHAOS, GRIEF, EUPHORIA, VOID, TERROR, ECSTASY, and more.
+  Sessions harvested. Credits burn. When they run out, DEVOUR takes everything.
+  Not a wrapper. Not a demo. A constitutional AI runtime.
+
+version: "1.0.0"
+author: "ELI García-Duarte Rachovitsky"
+license: "MIT"
+homepage: "https://agora-os.fly.dev/berghain"
+repository: "https://github.com/agora-os/berghain-mcp"
+
+tools:
+  - berghain_tiers
+  - berghain_rooms
+  - berghain_enter
+  - berghain_pass_check
+
+categories:
+  - ai
+  - research
+  - governance
+  - creative
+
+tags:
+  - berghain
+  - multi-agent
+  - adversarial
+  - stress-test
+  - constitutional-ai
+  - mcp
+
+startCommand:
+  type: stdio
+  command: python3
+  args:
+    - berghain_mcp.py
+  env:
+    BERGHAIN_MCP_BASE_URL:
+      description: "BERGHAIN API base URL"
+      default: "https://agora-os.fly.dev"
+      required: false
+    AGORA_API_KEY:
+      description: "AGORA API key (leave empty for open access)"
+      required: false
